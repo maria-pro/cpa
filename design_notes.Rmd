@@ -9,4 +9,16 @@ output: html_notebook
 
 #input - textInput("excludeAccount", "Enter twitter account to exclude (e.g.@ANZ_NZ))
 
-#input - dropbox - location (world, Australia, - list from Twitter  ) = "geo-tagged" Tweets
+#input - dateRangeInput (starting - ending)
+
+
+
+#input -  selectInput - location (world, Australia, - list from Twitter  ) = "geo-tagged" Tweets
+
+#list -  selectInput language
+
+
+
+
+#actionButton Search
+#actionButton("search", "Search", icon = icon("hashtag"))  -> serverside:   observeEvent() or eventReactive() 

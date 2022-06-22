@@ -218,10 +218,13 @@ pre code {
 <p>#tab - collect evidence from Twitter</p>
 <p>#input - textInput(“searchTerm”, “Enter your search term”, value=“Keyword”)</p>
 <p>#input - textInput(“excludeAccount”, &quot;Enter twitter account to exclude (e.g.@ANZ_NZ))</p>
-<p>#input - dropbox - location (world, Australia, - list from Twitter ) = “geo-tagged” Tweets</p>
+<p>#input - dateRangeInput (starting - ending)</p>
+<p>#input - selectInput - location (world, Australia, - list from Twitter ) = “geo-tagged” Tweets</p>
+<p>#list - selectInput language</p>
+<p>#actionButton Search #actionButton(“search”, “Search”, icon = icon(“hashtag”)) -&gt; serverside: observeEvent() or eventReactive()</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKI3RhYiAtIGNvbGxlY3QgZXZpZGVuY2UgZnJvbSBUd2l0dGVyCgojaW5wdXQgLSB0ZXh0SW5wdXQoInNlYXJjaFRlcm0iLCAiRW50ZXIgeW91ciBzZWFyY2ggdGVybSIsIHZhbHVlPSJLZXl3b3JkIikKCiNpbnB1dCAtIHRleHRJbnB1dCgiZXhjbHVkZUFjY291bnQiLCAiRW50ZXIgdHdpdHRlciBhY2NvdW50IHRvIGV4Y2x1ZGUgKGUuZy5AQU5aX05aKSkKCiNpbnB1dCAtIGRyb3Bib3ggLSBsb2NhdGlvbiAod29ybGQsIEF1c3RyYWxpYSwgLSBsaXN0IGZyb20gVHdpdHRlciAgKSA9ICJnZW8tdGFnZ2VkIiBUd2VldHMK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKI3RhYiAtIGNvbGxlY3QgZXZpZGVuY2UgZnJvbSBUd2l0dGVyCgojaW5wdXQgLSB0ZXh0SW5wdXQoInNlYXJjaFRlcm0iLCAiRW50ZXIgeW91ciBzZWFyY2ggdGVybSIsIHZhbHVlPSJLZXl3b3JkIikKCiNpbnB1dCAtIHRleHRJbnB1dCgiZXhjbHVkZUFjY291bnQiLCAiRW50ZXIgdHdpdHRlciBhY2NvdW50IHRvIGV4Y2x1ZGUgKGUuZy5AQU5aX05aKSkKCiNpbnB1dCAtIGRhdGVSYW5nZUlucHV0IChzdGFydGluZyAtIGVuZGluZykKCgoKI2lucHV0IC0gIHNlbGVjdElucHV0IC0gbG9jYXRpb24gKHdvcmxkLCBBdXN0cmFsaWEsIC0gbGlzdCBmcm9tIFR3aXR0ZXIgICkgPSAiZ2VvLXRhZ2dlZCIgVHdlZXRzCgojbGlzdCAtICBzZWxlY3RJbnB1dCBsYW5ndWFnZQoKCgoKI2FjdGlvbkJ1dHRvbiBTZWFyY2gKI2FjdGlvbkJ1dHRvbigic2VhcmNoIiwgIlNlYXJjaCIsIGljb24gPSBpY29uKCJoYXNodGFnIikpICAtPiBzZXJ2ZXJzaWRlOiAgIG9ic2VydmVFdmVudCgpIG9yIGV2ZW50UmVhY3RpdmUoKSAK</div>
 
 
 

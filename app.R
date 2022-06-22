@@ -1,21 +1,56 @@
 library(shiny)
+library(tidyverse)
+library(academictwitteR)
+library(shinydashboard)
+
+ui <- dashboardPage(
+  dashboardHeader(title="External Evidence- CPA Australia"),
+
+  dashboardSidebar(
+#menu
+      sidebarMenu(
+      menuItem("Evidence collection",
+               tabName="collection",
+               icon=icon("dashboard")),
+      menuItem("Evidence evaluation",
+               tabName="evaluation",
+               icon=icon("dashboard")),
+      menuItem("Guidance",
+               tabName="guidance",
+               icon=icon("dashboard"))
+    )
+  ),
 
 
+#body
+  dashboardBody(
+    tabItem(tabName="collection",
+            box(textInput("searchTerm", "", value="Enter your search term"),
+                textInput("excludeAccount", "Enter twitter account to exclude (e.g.@ANZ_NZ) - one per box"),
+                dateRangeInput("searchDates", label="Search dates", start="2018-01-01", end=Sys.time())
+            ),
+#            box(textInput("excludeAccount", "Enter twitter account to exclude (e.g.@ANZ_NZ) - one per box")),
+            box(tableOutput("top_10_table"))
 
-ui <- fluidPage(
-
-  numericInput("num", "Number one", value = 0, min = 0, max = 100),
-  sliderInput("num2", "Number two", value = 50, min = 0, max = 100),
-  sliderInput("rng", "Range", value = c(10, 20, 30), min = 0, max = 100),
-
-
-
-  sliderInput("x", "If x is", min = 1, max = 50, value = 30),
-  sliderInput("y", "and y is", min = 1, max = 50, value = 5),
-  "then, (x * y) is", textOutput("product"),
-  "and, (x * y) + 5 is", textOutput("product_plus5"),
-  "and (x * y) + 10 is", textOutput("product_plus10")
+            ),
+    tabItem(tabName="evaluation"
+            ),
+    tabItem(tabName="guidance")
+  )
 )
+ # textInput("searchTerm", "", value="Enter your search term"),
+
+ # textInput("excludeAccount", "Enter twitter account to exclude (e.g.@ANZ_NZ) - one per box"),
+
+ # actionButton("search", "Search", icon = icon("twitter"), class = "btn-sm btn-primary"),
+
+ # dateRangeInput("searchDates", label="Search dates", start="2018-01-01", end=Sys.time())
+
+ # selectInput language
+
+ # selectInput location
+
+#  tickbox
 
 server <- function(input, output, session) {
 
