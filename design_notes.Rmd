@@ -1,0 +1,12 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+#tab - collect evidence from Twitter
+
+#input - textInput("searchTerm", "Enter your search term", value="Keyword")
+
+#input - textInput("excludeAccount", "Enter twitter account to exclude (e.g.@ANZ_NZ))
+
+#input - dropbox - location (world, Australia, - list from Twitter  ) = "geo-tagged" Tweets
