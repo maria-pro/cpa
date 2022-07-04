@@ -1,0 +1,27 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+inputId="user"
+
+radioButtons("type"
+
+actionButton("newUser",
+
+actionButton("newHashtag"
+
+textInput("excludeAccount"
+
+dateRangeInput("searchDates"
+
+
+dataTableOutput("results") - renderDataTable() 
+
+```{r}
+data<-vroom::vroom("data/lactose.csv")%>%
+  select(user_username, text, created_at )
+class(data)
+```
+
+ verbatimTextOutput("test") 

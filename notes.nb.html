@@ -215,57 +215,21 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<p>#tab - collect evidence from Twitter</p>
-<p>#input - textInput(“searchTerm”, “Enter your search term”, value=“Keyword”)</p>
-<p>#input - textInput(“excludeAccount”, &quot;Enter twitter account to exclude (e.g.@ANZ_NZ))</p>
-<p>#input - dateRangeInput (starting - ending)</p>
-<p>#input - selectInput - location (world, Australia, - list from Twitter ) = “geo-tagged” Tweets</p>
-<p>#list - selectInput language</p>
-<p>#actionButton Search #actionButton(“search”, “Search”, icon = icon(“hashtag”)) -&gt; serverside: observeEvent() or eventReactive()</p>
-<pre><code>          actionButton(&quot;newUser&quot;, &quot;Generate user&quot;),
-          actionButton(&quot;newHashtag&quot;, &quot;Generate hashtag&quot;),
-          actionButton(&quot;update&quot;, &quot;Gather data&quot;),
-          hr(),
-
-            textInput(&quot;excludeAccount&quot;, &quot;Enter twitter account to exclude (e.g.@ANZ_NZ) - one per box&quot;),
-            dateRangeInput(&quot;searchDates&quot;, label=&quot;Search dates&quot;, start=&quot;2018-01-01&quot;, end=Sys.time()),
-
-
-
-
-
-
-
-            sliderInput(&quot;tws&quot;, &quot;Maximum number of tweets to obtain:&quot;,
-                        min=100, max= 500, value=250, step = 1),
-            sliderInput(&quot;numWords&quot;, &quot;Words in bar graph:&quot;,
-                        min=1, max= 35, value=10, step = 1),
-            sliderInput(&quot;max&quot;,
-                        &quot;Size of wordcloud:&quot;,
-                        min = 5,  max = 100, value = 50, step = 5),
-            actionButton(&quot;newCloud&quot;, &quot;Generate new wordcloud&quot;)),</code></pre>
-<p>#done</p>
-<p>#side panel 2 conditionalPanel( condition=“input.tabselected==2”, hr(), helpText(“First adjust the word frequency to fit the current data, then experiment with the correlation threshold until the plot is most readable.”), sliderInput(“lowFreq”, “Lowest word frequency to appear in plot:”, min=5, max= 100, value=10, step = 1), sliderInput(“corThreshold”, “Minimum correlation to appear in plot:”, min=.05, max= .8, value=.2, step = .01), textInput(inputId = “word”, label = “Find word associations among data:”), actionButton(“randWord”, “Generate word from corpus”), sliderInput(“corLimit”, “Correlation limit in associations:”, min = .01, max = .6, value = .15, step = 0.01)), #side panel 3 conditionalPanel(condition=“input.tabselected==3”, hr(), helpText(“Topic modeling utilizes latent Dirichlet allocation to analyze the corpus, generate potential topics, and assign each document a topic based on similar words in the text. The algorithm is run up to 30 times to determine the optimal number of topics.”), sliderInput(“timesToRun”, “Number of topics to try:”, min=5, max= 30, value=15, step = 1), actionButton(“newTopics”, “Generate topics”), sliderInput(“topicNum”, “Number of topics to display:”, min=1, max= 30, value=10, step = 1), sliderInput(“terms”, “Number of terms per topic:”, min=2, max= 10, value=3, step = 1), sliderInput(“topicNum2”, “Number of topics in heatmap:”, min=2, max= 30, value=5, step = 1), sliderInput(“tweetNum”, “Number of tweets in heatmap:”, min=2, max= 500, value=50, step = 1)), #side panel 4 conditionalPanel(condition=“input.tabselected==4”, hr(), helpText(“An n-gram is a continuous sequence of n words from a given text. Tweet generation uses a Markov chain to generate random tweets from the corpus based on the selected n-gram value.”), sliderInput(“nGram”, “N-gram value (Tweet):”, min=1, max= 10, value=5, step = 1), sliderInput(“length”, “Tweet length:”, min=2, max= 10, value=5, step = 1), actionButton(“tweet”, “Generate tweet from corpus”), sliderInput(“nGram2”, “N-gram value (Plot):”, min=2, max= 4, value=2, step = 1), sliderInput(“size”, “Size of plot:”, min = 1, max = 35, value = 10, step = 1), sliderInput(“size2”, “Size of wordcloud:”, min = 5, max = 30, value = 15, step = 5), actionButton(“newCloud2”, “Generate new wordcloud”))),</p>
-<pre><code>  #conditional main panel
-  mainPanel(
-    tabsetPanel(
-       tabPanel(&quot;Word Plots&quot;, plotOutput(&quot;freqPlot&quot;), wordcloud2Output(&quot;wordPlot&quot;), value = 1,  
-       conditionalPanel(condition=&quot;input.tabselected==1&quot;)),
-       tabPanel(&quot;Word Correlations&quot;, textOutput(&quot;corrPlotText&quot;),plotOutput(&quot;corrPlot&quot;), 
-       textOutput(&quot;corrTableText&quot;), verbatimTextOutput(&quot;corrTable&quot;), value = 2,  conditionalPanel(condition=&quot;input.tabselected==2&quot;)),
-       tabPanel(&quot;Topic Modeling&quot; , textOutput(&quot;numTopics&quot;), verbatimTextOutput(&quot;topics&quot;), 
-       plotlyOutput(&quot;topicPlot&quot;), value = 3,  conditionalPanel(condition=&quot;input.tabselected==3&quot;)),
-       tabPanel(&quot;N-Gram Segmentation&quot;, value = 4, conditionalPanel(condition=&quot;input.tabselected==4&quot;), 
-       verbatimTextOutput(&quot;babbleTable&quot;), plotOutput(&quot;plot&quot;), wordcloud2Output(&quot;plot2&quot;)),
-       id = &quot;tabselected&quot;)
-    )
-
-    )
-
-    )</code></pre>
+<p>inputId=“user”</p>
+<p>radioButtons(“type”</p>
+<p>actionButton(“newUser”,</p>
+<p>actionButton(“newHashtag”</p>
+<p>textInput(“excludeAccount”</p>
+<p>dateRangeInput(“searchDates”</p>
+<p>dataTableOutput(“results”) - renderDataTable()</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>verbatimTextOutput(“test”)</p>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKI3RhYiAtIGNvbGxlY3QgZXZpZGVuY2UgZnJvbSBUd2l0dGVyCgojaW5wdXQgLSB0ZXh0SW5wdXQoInNlYXJjaFRlcm0iLCAiRW50ZXIgeW91ciBzZWFyY2ggdGVybSIsIHZhbHVlPSJLZXl3b3JkIikKCiNpbnB1dCAtIHRleHRJbnB1dCgiZXhjbHVkZUFjY291bnQiLCAiRW50ZXIgdHdpdHRlciBhY2NvdW50IHRvIGV4Y2x1ZGUgKGUuZy5AQU5aX05aKSkKCiNpbnB1dCAtIGRhdGVSYW5nZUlucHV0IChzdGFydGluZyAtIGVuZGluZykKCgoKI2lucHV0IC0gIHNlbGVjdElucHV0IC0gbG9jYXRpb24gKHdvcmxkLCBBdXN0cmFsaWEsIC0gbGlzdCBmcm9tIFR3aXR0ZXIgICkgPSAiZ2VvLXRhZ2dlZCIgVHdlZXRzCgojbGlzdCAtICBzZWxlY3RJbnB1dCBsYW5ndWFnZQoKCgoKI2FjdGlvbkJ1dHRvbiBTZWFyY2gKI2FjdGlvbkJ1dHRvbigic2VhcmNoIiwgIlNlYXJjaCIsIGljb24gPSBpY29uKCJoYXNodGFnIikpICAtPiBzZXJ2ZXJzaWRlOiAgIG9ic2VydmVFdmVudCgpIG9yIGV2ZW50UmVhY3RpdmUoKSAKCgoKICAgICAgICAgICAgICAKCiAgICAgICAgICAgICAgYWN0aW9uQnV0dG9uKCJuZXdVc2VyIiwgIkdlbmVyYXRlIHVzZXIiKSwKICAgICAgICAgICAgICBhY3Rpb25CdXR0b24oIm5ld0hhc2h0YWciLCAiR2VuZXJhdGUgaGFzaHRhZyIpLAogICAgICAgICAgICAgIGFjdGlvbkJ1dHRvbigidXBkYXRlIiwgIkdhdGhlciBkYXRhIiksCiAgICAgICAgICAgICAgaHIoKSwKCiAgICAgICAgICAgICAgICB0ZXh0SW5wdXQoImV4Y2x1ZGVBY2NvdW50IiwgIkVudGVyIHR3aXR0ZXIgYWNjb3VudCB0byBleGNsdWRlIChlLmcuQEFOWl9OWikgLSBvbmUgcGVyIGJveCIpLAogICAgICAgICAgICAgICAgZGF0ZVJhbmdlSW5wdXQoInNlYXJjaERhdGVzIiwgbGFiZWw9IlNlYXJjaCBkYXRlcyIsIHN0YXJ0PSIyMDE4LTAxLTAxIiwgZW5kPVN5cy50aW1lKCkpLAoKCgoKCgoKICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJ0d3MiLCAiTWF4aW11bSBudW1iZXIgb2YgdHdlZXRzIHRvIG9idGFpbjoiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPTEwMCwgbWF4PSA1MDAsIHZhbHVlPTI1MCwgc3RlcCA9IDEpLAogICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoIm51bVdvcmRzIiwgIldvcmRzIGluIGJhciBncmFwaDoiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPTEsIG1heD0gMzUsIHZhbHVlPTEwLCBzdGVwID0gMSksCiAgICAgICAgICAgICAgICBzbGlkZXJJbnB1dCgibWF4IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICJTaXplIG9mIHdvcmRjbG91ZDoiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluID0gNSwgIG1heCA9IDEwMCwgdmFsdWUgPSA1MCwgc3RlcCA9IDUpLAogICAgICAgICAgICAgICAgYWN0aW9uQnV0dG9uKCJuZXdDbG91ZCIsICJHZW5lcmF0ZSBuZXcgd29yZGNsb3VkIikpLAoKCiNkb25lCgoKICAjc2lkZSBwYW5lbCAyCiAgICAgICAgY29uZGl0aW9uYWxQYW5lbCgKICAgICAgICAgICAgICAgICBjb25kaXRpb249ImlucHV0LnRhYnNlbGVjdGVkPT0yIiwKICAgICAgICAgICAgICAgICBocigpLAogICAgICAgICAgICAgICAgIGhlbHBUZXh0KCJGaXJzdCBhZGp1c3QgdGhlIHdvcmQgZnJlcXVlbmN5IHRvIGZpdCB0aGUgY3VycmVudCBkYXRhLCAKICAgICAgICAgICAgICAgICB0aGVuIGV4cGVyaW1lbnQgd2l0aCB0aGUgY29ycmVsYXRpb24gdGhyZXNob2xkIHVudGlsIHRoZSBwbG90IGlzIG1vc3QgcmVhZGFibGUuIiksCiAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoImxvd0ZyZXEiLCAiTG93ZXN0IHdvcmQgZnJlcXVlbmN5IHRvIGFwcGVhciBpbiBwbG90OiIsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbj01LCBtYXg9IDEwMCwgdmFsdWU9MTAsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICBzbGlkZXJJbnB1dCgiY29yVGhyZXNob2xkIiwgIk1pbmltdW0gY29ycmVsYXRpb24gdG8gYXBwZWFyIGluIHBsb3Q6IiwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPS4wNSwgbWF4PSAuOCwgdmFsdWU9LjIsIHN0ZXAgPSAuMDEpLAogICAgICAgICAgICAgICAgIHRleHRJbnB1dChpbnB1dElkID0gIndvcmQiLAogICAgICAgICAgICAgICAgICAgICAgICAgICBsYWJlbCA9ICJGaW5kIHdvcmQgYXNzb2NpYXRpb25zIGFtb25nIGRhdGE6IiksCiAgICAgICAgICAgICAgICAgYWN0aW9uQnV0dG9uKCJyYW5kV29yZCIsICJHZW5lcmF0ZSB3b3JkIGZyb20gY29ycHVzIiksCiAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoImNvckxpbWl0IiwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAiQ29ycmVsYXRpb24gbGltaXQgaW4gYXNzb2NpYXRpb25zOiIsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluID0gLjAxLCAgbWF4ID0gLjYsIHZhbHVlID0gLjE1LCBzdGVwID0gMC4wMSkpLAogICAgICAgI3NpZGUgcGFuZWwgMwogICAgICAgIGNvbmRpdGlvbmFsUGFuZWwoY29uZGl0aW9uPSJpbnB1dC50YWJzZWxlY3RlZD09MyIsCiAgICAgICAgICAgICAgICAgaHIoKSwKICAgICAgICAgICAgICAgICBoZWxwVGV4dCgiVG9waWMgbW9kZWxpbmcgdXRpbGl6ZXMgbGF0ZW50IERpcmljaGxldCBhbGxvY2F0aW9uIHRvIGFuYWx5emUgdGhlIGNvcnB1cywgCiAgICAgICAgICAgICAgICAgZ2VuZXJhdGUgcG90ZW50aWFsIHRvcGljcywgYW5kIGFzc2lnbiBlYWNoIGRvY3VtZW50IGEgdG9waWMgYmFzZWQgb24gc2ltaWxhciB3b3JkcyBpbiB0aGUgdGV4dC4gCiAgICAgICAgICAgICAgICAgVGhlIGFsZ29yaXRobSBpcyBydW4gdXAgdG8gMzAgdGltZXMgdG8gZGV0ZXJtaW5lIHRoZSBvcHRpbWFsIG51bWJlciBvZiB0b3BpY3MuIiksCiAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoInRpbWVzVG9SdW4iLCAiTnVtYmVyIG9mIHRvcGljcyB0byB0cnk6IiwgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPTUsIG1heD0gMzAsIHZhbHVlPTE1LCBzdGVwID0gMSksCiAgICAgICAgICAgICAgICAgYWN0aW9uQnV0dG9uKCJuZXdUb3BpY3MiLCAiR2VuZXJhdGUgdG9waWNzIiksCiAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoInRvcGljTnVtIiwgIk51bWJlciBvZiB0b3BpY3MgdG8gZGlzcGxheToiLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaW49MSwgbWF4PSAzMCwgdmFsdWU9MTAsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICBzbGlkZXJJbnB1dCgidGVybXMiLCAiTnVtYmVyIG9mIHRlcm1zIHBlciB0b3BpYzoiLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaW49MiwgbWF4PSAxMCwgdmFsdWU9Mywgc3RlcCA9IDEpLAogICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJ0b3BpY051bTIiLCAiTnVtYmVyIG9mIHRvcGljcyBpbiBoZWF0bWFwOiIsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbj0yLCBtYXg9IDMwLCB2YWx1ZT01LCBzdGVwID0gMSksCiAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoInR3ZWV0TnVtIiwgIk51bWJlciBvZiB0d2VldHMgaW4gaGVhdG1hcDoiLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICBtaW49MiwgbWF4PSA1MDAsIHZhbHVlPTUwLCBzdGVwID0gMSkpLAogICAgICAgI3NpZGUgcGFuZWwgNAogICAgICAgIGNvbmRpdGlvbmFsUGFuZWwoY29uZGl0aW9uPSJpbnB1dC50YWJzZWxlY3RlZD09NCIsCiAgICAgICAgICAgICAgICAgICAgICAgICBocigpLAogICAgICAgICAgICAgICAgICAgICAgICAgaGVscFRleHQoIkFuIG4tZ3JhbSBpcyBhIGNvbnRpbnVvdXMgc2VxdWVuY2Ugb2YgbiB3b3JkcyBmcm9tIGEgZ2l2ZW4gdGV4dC4gCiAgICAgICAgICAgICAgICAgICAgICAgICBUd2VldCBnZW5lcmF0aW9uIHVzZXMgYSBNYXJrb3YgY2hhaW4gdG8gZ2VuZXJhdGUgcmFuZG9tIHR3ZWV0cyBmcm9tIAogICAgICAgICAgICAgICAgICAgICAgICAgdGhlIGNvcnB1cyBiYXNlZCBvbiB0aGUgc2VsZWN0ZWQgbi1ncmFtIHZhbHVlLiIpLAogICAgICAgICAgICAgICAgICAgICAgICAgc2xpZGVySW5wdXQoIm5HcmFtIiwgIk4tZ3JhbSB2YWx1ZSAoVHdlZXQpOiIsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPTEsIG1heD0gMTAsIHZhbHVlPTUsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJsZW5ndGgiLCAiVHdlZXQgbGVuZ3RoOiIsIAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluPTIsIG1heD0gMTAsIHZhbHVlPTUsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICAgICAgICAgIGFjdGlvbkJ1dHRvbigidHdlZXQiLCAiR2VuZXJhdGUgdHdlZXQgZnJvbSBjb3JwdXMiKSwKICAgICAgICAgICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJuR3JhbTIiLCAiTi1ncmFtIHZhbHVlIChQbG90KToiLCAKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG1pbj0yLCBtYXg9IDQsIHZhbHVlPTIsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJzaXplIiwgIlNpemUgb2YgcGxvdDoiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluID0gMSwgbWF4ID0gMzUsIHZhbHVlID0gMTAsIHN0ZXAgPSAxKSwKICAgICAgICAgICAgICAgICAgICAgICAgIHNsaWRlcklucHV0KCJzaXplMiIsICJTaXplIG9mIHdvcmRjbG91ZDoiLAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgbWluID0gNSwgbWF4ID0gMzAsIHZhbHVlID0gMTUsIHN0ZXAgPSA1KSwKICAgICAgICAgICAgICAgICAgICAgICAgIGFjdGlvbkJ1dHRvbigibmV3Q2xvdWQyIiwgIkdlbmVyYXRlIG5ldyB3b3JkY2xvdWQiKSkpLAogICAKICAgICAgI2NvbmRpdGlvbmFsIG1haW4gcGFuZWwKICAgICAgbWFpblBhbmVsKAogICAgICAgIHRhYnNldFBhbmVsKAogICAgICAgICAgIHRhYlBhbmVsKCJXb3JkIFBsb3RzIiwgcGxvdE91dHB1dCgiZnJlcVBsb3QiKSwgd29yZGNsb3VkMk91dHB1dCgid29yZFBsb3QiKSwgdmFsdWUgPSAxLCAgCiAgICAgICAgICAgY29uZGl0aW9uYWxQYW5lbChjb25kaXRpb249ImlucHV0LnRhYnNlbGVjdGVkPT0xIikpLAogICAgICAgICAgIHRhYlBhbmVsKCJXb3JkIENvcnJlbGF0aW9ucyIsIHRleHRPdXRwdXQoImNvcnJQbG90VGV4dCIpLHBsb3RPdXRwdXQoImNvcnJQbG90IiksIAogICAgICAgICAgIHRleHRPdXRwdXQoImNvcnJUYWJsZVRleHQiKSwgdmVyYmF0aW1UZXh0T3V0cHV0KCJjb3JyVGFibGUiKSwgdmFsdWUgPSAyLCAgY29uZGl0aW9uYWxQYW5lbChjb25kaXRpb249ImlucHV0LnRhYnNlbGVjdGVkPT0yIikpLAogICAgICAgICAgIHRhYlBhbmVsKCJUb3BpYyBNb2RlbGluZyIgLCB0ZXh0T3V0cHV0KCJudW1Ub3BpY3MiKSwgdmVyYmF0aW1UZXh0T3V0cHV0KCJ0b3BpY3MiKSwgCiAgICAgICAgICAgcGxvdGx5T3V0cHV0KCJ0b3BpY1Bsb3QiKSwgdmFsdWUgPSAzLCAgY29uZGl0aW9uYWxQYW5lbChjb25kaXRpb249ImlucHV0LnRhYnNlbGVjdGVkPT0zIikpLAogICAgICAgICAgIHRhYlBhbmVsKCJOLUdyYW0gU2VnbWVudGF0aW9uIiwgdmFsdWUgPSA0LCBjb25kaXRpb25hbFBhbmVsKGNvbmRpdGlvbj0iaW5wdXQudGFic2VsZWN0ZWQ9PTQiKSwgCiAgICAgICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KCJiYWJibGVUYWJsZSIpLCBwbG90T3V0cHV0KCJwbG90IiksIHdvcmRjbG91ZDJPdXRwdXQoInBsb3QyIikpLAogICAgICAgICAgIGlkID0gInRhYnNlbGVjdGVkIikKICAgICAgICApCiAgIAogICAgICAgICkKICAgCiAgICAgICAgKQo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKaW5wdXRJZD0idXNlciIKCnJhZGlvQnV0dG9ucygidHlwZSIKCmFjdGlvbkJ1dHRvbigibmV3VXNlciIsCgphY3Rpb25CdXR0b24oIm5ld0hhc2h0YWciCgp0ZXh0SW5wdXQoImV4Y2x1ZGVBY2NvdW50IgoKZGF0ZVJhbmdlSW5wdXQoInNlYXJjaERhdGVzIgoKCmRhdGFUYWJsZU91dHB1dCgicmVzdWx0cyIpIC0gcmVuZGVyRGF0YVRhYmxlKCkgCgpgYGB7cn0KZGF0YTwtdnJvb206OnZyb29tKCJkYXRhL2xhY3Rvc2UuY3N2IiklPiUKICBzZWxlY3QodXNlcl91c2VybmFtZSwgdGV4dCwgY3JlYXRlZF9hdCApCmNsYXNzKGRhdGEpCmBgYAoKIHZlcmJhdGltVGV4dE91dHB1dCgidGVzdCIpIAo=</div>
 
 
 
@@ -312,7 +276,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("design_notes.Rmd");
+  window.initializeSourceEmbed("notes.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
